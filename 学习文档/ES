@@ -1,0 +1,43 @@
+{
+  "name":"gaolujie",
+  "desc":"gaoxiao meibai",
+  "price":30,
+  "productor":"gaolujie producer",
+  "tage":["meibai","fangzhu"]
+}
+
+{
+  "name":"jiajieshi",
+  "desc":"jiajieshi meibai",
+  "price":25,
+  "productor":"jiajieshi  producer",
+  "tage":["meibai","fangzhu"]
+}
+
+{
+  "name":"heiren",
+  "desc":"heiren meibai",
+  "price":20,
+  "productor":"heiren  producer",
+  "tage":["meibai","fangzhu"]
+}
+----------------------------------------
+query DSL检索方式
+
+GET /xie/product/_search
+{
+  "query": {"match_all": {}}
+}
+
+GET /xie/product/_search
+{"query": {
+  "match": {
+    "desc": "meibai"
+  }
+  },
+  "sort":[
+    {"price":"desc"}]//asc升序，desc降序
+}
+
+
+
