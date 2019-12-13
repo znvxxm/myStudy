@@ -1,0 +1,5 @@
+启动：进入build目录 cd /opt/opentsdb-2.3.1/build
+      nohup ./tsdb tsd >/dev/null 2>&1 &
+
+重启：先jps,找出TSDMain进程,kill掉该进程
+      按照上面启动程序进行启动
