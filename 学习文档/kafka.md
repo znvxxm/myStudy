@@ -1,16 +1,29 @@
-topic:
+topic:逻辑上的概念
+partition：物理上的概念,每个分区又进行了索引和分片操作.index和.log
 日志分区
+日志地址配置文件：./etc/kafka/conf.dist/server.properties
 
 
 #创建topic
--  bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
+-  bin/kafka-topics --create --zookeeper 10.45.157.131:2181 --replication-factor 1 --partitions 1 --topic test
+#删除topic
+-  bin/kafka-topics --delete --zookeeper 10.45.157.131:2181 --topic test
 #查看topic
--  bin/kafka-topics --list --zookeeper localhost:2181
+-  bin/kafka-topics --list --zookeeper 10.45.157.131:2181
 #查看某个topic详细信息
--  bin/kafka-topics --zookeeper localhost:2181 --describe --topic test 
+-  bin/kafka-topics --zookeeper 10.45.157.131:2181 --describe --topic test 
 #发送消息
--  bin/kafka-console-producer --broker-list localhost:9092 --topic test
+-  bin/kafka-console-producer --broker-list 10.45.157.131:9092 --topic test
 #消费消息
--  bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic test --from-beginning
+-  bin/kafka-console-consumer --bootstrap-server 10.45.157.131:9092 --topic test --from-beginning
 
 
+##producer生产者
+**分区策略
+  --指定分区写入
+  --根据哈希值写入
+  --不指定k值，采用轮询算法写入分区
+**可靠性机制（ack）
+
+
+ 
