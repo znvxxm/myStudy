@@ -1,8 +1,9 @@
-##scala语法
+##scala是一门多范式的编程语言：即面向对象和函数式
+Scala运行在Java虚拟机上，因此必须要有jre环境
 
 -
 ##常量与变量
-**常量用val定义 val x：Int=1+1
+**常量用val定义 val x:Int=1+1
   常量的类型可以自动推断，因此可以省去显示声明类型，如val x=1+1
 **变量用var定义 var y
 
@@ -19,7 +20,7 @@
    def printA(msg:String){println(msg)}
  **方法可以接受多个参数列表，也可以没有参数列表
    def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
-   println(addThenMultiply(1, 2)(3)) // 9
+   println(addThenMultiply(1, 2)(3)) // 
    
    def name: String = System.getProperty("user.name")
    println("Hello, " + name + "!")
@@ -59,6 +60,47 @@
    sum
  }
  println(fun4(1,2,3,4))
+ 
+##函数与方法的区别
+函数在Scala里是‘头等公民’，他可以像任何其他数据类型一样被传递和操作，函数是一个对象，有apply,curried,toStrig,tupled这四个方法。
+而方法不具备这些特性
+
+##方法转为函数（神奇的下划线）
+在方法后面接一个下划线_
+ 
+
+##循环
+*for循环语法结构
+for(i <- 表达式/数组/集合)
+for(i <- 1 to 10) println(i)
+
+##调用方法和函数
+Scala中的+，— * / %等操作符和Java的作用一样，但是特别是：这些操作符实际上是方法
+a+b 实际过程是 a.+(b)
+
+
+##数组，映射，元组，集合
+#数组
+*定长数组
+  val a=new Array[T](n)
+*变长数组
+  var b= ArrayBuffer[T]() 注意：需要导包  import scala.collection.mutable.ArrayBuffer
+*数组添加元素：b+=1  b+=(1,2)
+*数组添加数组：b++=Array(1,2)
+ 
+  
+  var a=Array(1,2,3,4,5,6)
+  a.filter(x=>x%2==0).map(x=>x*10)
+等价于
+  a.filter(_%2==0).map(_*10)  //神奇的下划线 ：此时代表数组中的每一个元素
+  
+  
+##映射
+*构建映射
+1.val map=Map(key ->value,key->value ....)
+2.利用元组构建 val map=Map((key,value),(key,value)...)
+  
+  
  
  
   
