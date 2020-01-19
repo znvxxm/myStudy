@@ -95,15 +95,56 @@ a+b 实际过程是 a.+(b)
   a.filter(_%2==0).map(_*10)  //神奇的下划线 ：此时代表数组中的每一个元素
   
   
-##映射
-*构建映射
+##映射Map
+**构建不可变映射
 1.val map=Map(key ->value,key->value ....)
 2.利用元组构建 val map=Map((key,value),(key,value)...)
-  
-  
+
+*根据k访问value
+map1(K)
+
+*访问map中的所有k
+map1.keys
+
+*循环遍历map的所有k的value
+ for(k <- map1.keys) println(k)
+
+*getOrElse方法 
+map1.getOrElse("wangwu",50)  //没有该K就进行添加
  
- 
-  
+**构建可变映射
+val map=new HashMap[String,Int]
+
+1.添加元素
+map +=("mayaun"->50)  
+map +=("mayhua"->49,"chen",34)
+
+2.删除元素
+map -=("mayaun") 
+map.remove("") 
+
+
+##类
+**Scala中的object
+1.存放工具方法和常量
+2.单例模式，可以不用new，直接静态调用里面的属性和方法
+
+**Scala中的伴生对象
+如果有一个class对象，还有一个和class同名的object文件，那么就称这个object是class的伴生对象，class为object的伴生类
+特点：可以互相访问
+
+**apply方法
+可以不用new关键字来生成对象，可以直接用类名(参数)生成实例对象
+
+**main方法
+1.作为程序的入口，必须放在object代码块中
+2.可以通过extend APP代替main方法
+
+##模式匹配
+match  case
+
+##偏函数
+
  
   
   

@@ -11,6 +11,18 @@ export PATH=/usr/local/bin:$PATH
 find /opt -name kafka-console-consumer.sh
 
 
+##crontab命令使用
+https://www.cnblogs.com/runtimeexception/p/10050809.html
+
+crontab -l  //查看该用户下目前的定时任务
+crontab -e  //设定定时任务
+
+运行crontab –e 编写一条定时任务 */5 * * * * /home/test.sh 在每5分钟执行一次test.sh脚本
+
+
+
+
+
 
 
 
