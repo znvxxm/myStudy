@@ -1,0 +1,17 @@
+##文本处理三剑客之一：grep过滤器
+
+语法格式：
+第一种：对文件进行过滤  grep [option] [pattern] [file1,file2..] 
+第二章：对管道输出的文件进行处理  command | grep [option] [pattern]
+
+
+grep参数：
+-v (reverse)反向过滤，不显示匹配行
+-i (ignore)忽略大小写
+-n (number)显示行号
+-r (recursion)递归搜索
+-E (extension)支持拓展正则表达式  
+-F 不按正则表达式匹配，按照字符串字面意思匹配
+
+
+grep -E 等价于 egrep

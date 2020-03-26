@@ -1,0 +1,41 @@
+##文本处理三剑客：sed流式编辑器 streaming editor
+
+sed工作模式：逐行处理
+
+语法格式：pattern为匹配模式，如果没有pattern那么就是默认对每一行都进行command
+第一种：stdout | sed [option] "pattern command"   
+第二种：sed [option] "pattern command" file
+
+sed的选项：[option]
+    -n 只打印模式匹配行，不加的话，则把匹配的行打印两遍
+    -e 直接在命令行进行sed编辑，默认选项   sed -n -e '/python/p' -e '/PYTHON/p' sed.txt 即可以接多个模式，有多个的话必须得写
+    -f 编辑动作保存在文件中，指定文件执行
+    -r 支持扩展正则表达式    sed -n -r '/python|PYTHON/p' sed.txt
+    -i 直接修改原文件内容    sed -i 's/love/like/g' sed.txt
+
+
+sed中的patter用法：
+10command                       匹配第十行
+10,20command                    第十行开始，第二十行结束
+10,+5command                    第十行开始，第16行结束
+/pattern1/command               基于正则表达式，匹配pattern1的行
+/pattern1/,/pattern2/command    匹配到pattern1的行开始，到匹配pattern2的行结束
+
+
+sed中的编辑命令：
+ 查询：  p   打印
+ 
+ 增加：  a   行后追加  sed -i '/root/a XXXXXXX' sed.txt
+         i   行前追加
+         r   外部文件读入，行后追加  sed -i '/root/r list.txt' sed.txt (路径可绝对路径也可相对路径)
+         w   匹配行写入外部文件   sed '/root/w /user.log' sed,txt
+ 
+ 删除：  d
+ 
+ 修改：  s/old/new     将行内第一个old替换成new     （supersede//global）
+         s/old/new/g   将行内全部old替换成new
+         s/old/new/2g  将行内前两个old替换成new
+         s/old/new/ig  将行所有old替换成new，忽略大小写
+       批量修改：sed -i "s/oldString/newString/g" `grep oldString -rl /path` 
+   
+ 
