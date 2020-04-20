@@ -68,6 +68,16 @@ crontab -e  //设定定时任务
 这个文件中写入了什么命令，在每次系统启动时都会执行一次.
 也就是说，如果有任何需要在系统启动时运行的工作，则只需写入 /etc/rc.d/rc.local 配置文件即可.
 
+##软连接的创建与删除
+1.创建时以绝对路径进行创建
+ln -s /opt/datax /opt/client  == ln -s /opt/datax /opt/client/  均是将datax目录链接到client目录下
 
+[root@lv131 opt]# cd client/
+[root@lv131 client]# ll
+总用量 4
+-rw-r--r--. 1 root root 57 11月 25 00:52 bigdata_env
+lrwxrwxrwx. 1 root root 10 4月  20 11:45 datax -> /opt/datax
+
+2.删除 切换到链接目录下直接删除，会出现是否删除软连接符号的提醒，如果没有，千万小心，有可能删掉源文件！！
 
 
