@@ -5,7 +5,7 @@ partition：物理上的概念,每个分区又进行了索引和分片操作.ind
 
 
 #创建topic
--  bin/kafka-topics --create --zookeeper 10.45.157.131:2181 --replication-factor 1 --partitions 1 --topic test
+-  bin/kafka-topics --create --zookeeper 10.45.157.131:2181 --replication-factor 1 --partitions 5 --topic kafka-test
 #删除topic
 -  bin/kafka-topics --delete --zookeeper 10.45.157.131:2181 --topic test
 #查看topic
@@ -17,6 +17,20 @@ partition：物理上的概念,每个分区又进行了索引和分片操作.ind
 #消费消息
 -  bin/kafka-console-consumer --bootstrap-server 10.45.157.131:9092 --topic test --from-beginning
 
+#创建消费者组
+bin/kafka-console-consumer --bootstrap-server 10.45.157.131:9092 --topic kafka-test --consumer-property group.id=kafka-test-group
+
+#将消费者组内offset置为0，从头开始消费
+kafka-consumer-groups --bootstrap-server lv131.dct-znv.com:9092 --group kafka-test-group --topic bdp_quality_verify_data --reset-offsets --to-earliest --execute
+
+##查看消费者组
+-旧版本
+ bin/kafka-consumer-groups --list --zookeeper 10.45.157.131:2181 
+- 新版本
+ bin/kafka-consumer-groups --new-consumer --bootstrap-server 10.45.157.131:9092 --list
+ 
+ #查看特定消费者组详情
+ bin/kafka-consumer-groups --new-consumer --bootstrap-server 10.45.157.131:9092 --group kafka-test-group --describe
 
 ##producer生产者
 **分区策略

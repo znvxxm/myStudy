@@ -127,11 +127,30 @@ flatMap  与map类似，但是对每个元素可以返回一个或者多个值
 
 
 
+**Dstream和RDD的区别
+DStream：Discretized Stream，离散流，Spark Streaming提供的一种高级抽象，代表了一个持续不断的数据流；
+DStream的内部，其实是一系列持续不断产生的RDD，RDD是Spark Core的核心抽象，即，不可变的，分布式的数据集；就是一个装数据的集合
+DStream中的每个RDD都包含了一个时间段内的数据；（可以设置一个RDD装多少个batch）
+
+**InputDstream和Dstream区别
+InputDstream指输入流的来源
 
 
+**SQLContext和HiveContext
+SQLContext支持SQL语法解析器（SQL-92语法），
+HiveContext支持SQL语法解析器和HiveSQL语法解析器，默认为HiveSQL语法解析器，用户可以通过配置切换成SQL语法解析器来运行HiveQL不支持的语法
 
+SQLContext是通往SparkSQL的入口
 
+SQLContext依赖SparkContext，一旦有了SQLContext，就可以开始处理DataFrame、DataSet等
+SQLContext创建：
+   val sc =new SparkContext(new SparkConf())
+   val sqlContext=new SQLContext(sc) 
 
+HiveContext是通往hive入口,继承了SQLContext,具有SQLContext的所有功能。
+HiveContext创建：
+   val sc =new SparkContext(new SparkConf())
+   val sqlContext=new HiveContext(sc) 
 
 
 

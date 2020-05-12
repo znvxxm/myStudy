@@ -11,12 +11,15 @@
 *更改字段
    Alter table 表名  change column 原字段名称  现字段名称  数据类型;
    
+##hive 修改表名
+alter table table_name rename to new_table_name;
 
 
 ##hive删除操作
 **默认的hive不支持delete和updata操作
 *--  删除分区
 alter table employee_table drop partition (stat_year_month>='2018-01');
+alter table ods_data_label_of_ods_power_original_data drop partition (mt='2020');
 
 *--  按条件删除数据
 insert overwrite table employee_table select * from employee_table where id>'180203a15f';
@@ -71,6 +74,9 @@ insert overwrite table employee_table select * from employee_table where id>'180
 **字段与数据对不齐
 *beeline -u jdbc:hive2://**.**.***.**:10000 -n hadoop 使用beeline进行连接
 
+
+##Hive sql比较大小
+对于string类型的value要比较数值的大小，必须要将string类型转化成int或者其他可以比较的类型，否则结果会按字符串比较大小
 
 
 

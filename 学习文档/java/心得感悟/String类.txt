@@ -1,0 +1,75 @@
+通过看就可以知道String是类，不是基本数据类型。既然是类那么就有属性和方法
+
+构造方法创建  String s1=new String("abc")
+字面量创建    String s1="abc"
+
+这两种方式都能创建s1字符串，但是两者不同。通过new关键字，那么就一定会在堆中创建一个对象
+而通过字面量创建的是直接存储在方法区的常量池里面，是为了字符串可以重复使用
+
+
+new String()创建的字符串是在堆内存，其的值又指向了方法区的常量池。
+而字面量创建的字符串，直接就指向了方法区的常量池。
+
+
+
+常用方法：
+1.判断功能
+boolean equals(Object obj)
+
+boolean equalsIgnoreCase(String str)
+
+boolean startsWith(String str)
+
+boolean endsWith(String str)
+
+
+
+2.获取功能
+int length()
+
+char charAt(int index)
+
+int indexOf(String str)
+
+String subString(int start)
+
+String subString(int start, int end)
+
+
+3.转换功能
+char[] toCharArray()
+String toLowerCase()
+String toUpperCase()
+
+4.其它api
+String trim()
+String[] split(String str)
+
+
+
+StringBuffer
+StringBuffer内容可变；String内容不变，对其每一次操作都是生成一个新的字符串，这样不用的字符串都成了垃圾
+
+使用：
+StringBuffer sb=new StringBuffer();//默认的无参的构造方法，创建的容量为16
+
+常见操作：
+append(任意类型)
+toString  转换为String
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
